@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiMANNia"
+		]
+	},
+	"ageclassification-msg": "Age Classification",
+	"ageclassification-desc": "Adds an age classification from “[https://www.altersklassifizierung.de Freiwillige Selbstkontrolle Multimedia-Diensteanbieter e.V.]” (Voluntary Self-Regulation of Multimedia Service Providers) (FSM)",
+	"ageclassification": "labelled with"
+}

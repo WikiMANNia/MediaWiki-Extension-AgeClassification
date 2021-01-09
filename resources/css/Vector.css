@@ -1,0 +1,9 @@
+/**
+ * CSS for Vector
+ */
+
+#p-ageclassification .body {
+	background-image: none !important;
+	margin-left: 0 !important;
+	margin-top: .3em;
+}

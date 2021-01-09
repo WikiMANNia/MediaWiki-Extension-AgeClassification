@@ -1,0 +1,63 @@
+{
+	"name": "AgeClassification",
+	"author": "WikiMANNia",
+	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
+	"license-name": "GPL-2.0-or-later",
+	"version": "1.0.0",
+	"namemsg": "ageclassification-msg",
+	"descriptionmsg": "ageclassification-desc",
+	"config": {
+		"AgeClassificationButtonURL": "www.altersklassifizierung.de/",
+		"AgeClassificationButtonIMG": "yourdomain.org/skins/fsm-aks148.png",
+		"AgeClassificationMetaName": "age-de-meta-label",
+		"AgeClassificationMetaContent": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"
+	},
+	"manifest_version": 1,
+	"type": "other",
+	"AutoloadClasses": {
+		"AgeClassificationHooks": "includes/specials/HooksAgeClassification.php"
+	},
+	"Hooks": {
+	    "BeforePageDisplay": "AgeClassificationHooks::onBeforePageDisplay",
+		"SkinBuildSidebar": "AgeClassificationHooks::onSkinBuildSidebar"
+	},
+	"MessagesDirs": {
+		"AgeClassification": [ "i18n" ]
+	},
+	"ResourceModules": {
+		"ext.ageclassification.common": {
+			"styles": "css/Common.css",
+			"images": {
+				"#ageclassification": "resources/images/fsm-aks.svg"
+			}
+		},
+		"ext.ageclassification.cologneblue": {
+			"styles": "css/CologneBlue.css",
+			"images": {
+				"#ageclassification": "resources/images/fsm-aks.svg"
+			}
+		},
+		"ext.ageclassification.modern": {
+			"styles": "css/Modern.css",
+			"images": {
+				"#ageclassification": "resources/images/fsm-aks.svg"
+			}
+		},
+		"ext.ageclassification.monobook": {
+			"styles": "css/MonoBook.css",
+			"images": {
+				"#ageclassification": "resources/images/fsm-aks.svg"
+			}
+		},
+		"ext.ageclassification.vector": {
+			"styles": "css/Vector.css",
+			"images": {
+				"#ageclassification": "resources/images/fsm-aks.svg"
+			}
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "AgeClassification/resources"
+	}
+}
