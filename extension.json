@@ -3,12 +3,12 @@
 	"author": "WikiMANNia",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
 	"config": {
+		"AgeClassificationButton": false,
 		"AgeClassificationButtonURL": "www.altersklassifizierung.de/",
-		"AgeClassificationButtonIMG": "yourdomain.org/skins/fsm-aks148.png",
 		"AgeClassificationMetaName": "age-de-meta-label",
 		"AgeClassificationMetaContent": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"
 	},
@@ -26,34 +26,22 @@
 	},
 	"ResourceModules": {
 		"ext.ageclassification.common": {
-			"styles": "css/Common.css",
-			"images": {
-				"#ageclassification": "resources/images/fsm-aks.svg"
-			}
+			"styles": "css/Common.css"
 		},
 		"ext.ageclassification.cologneblue": {
-			"styles": "css/CologneBlue.css",
-			"images": {
-				"#ageclassification": "resources/images/fsm-aks.svg"
-			}
+			"styles": "css/Cologneblue.css"
 		},
 		"ext.ageclassification.modern": {
-			"styles": "css/Modern.css",
-			"images": {
-				"#ageclassification": "resources/images/fsm-aks.svg"
-			}
+			"styles": "css/Modern.css"
+		},
+		"ext.ageclassification.minerva": {
+			"styles": "css/Minerva.css"
 		},
 		"ext.ageclassification.monobook": {
-			"styles": "css/MonoBook.css",
-			"images": {
-				"#ageclassification": "resources/images/fsm-aks.svg"
-			}
+			"styles": "css/Monobook.css"
 		},
 		"ext.ageclassification.vector": {
-			"styles": "css/Vector.css",
-			"images": {
-				"#ageclassification": "resources/images/fsm-aks.svg"
-			}
+			"styles": "css/Vector.css"
 		}
 	},
 	"ResourceFileModulePaths": {
