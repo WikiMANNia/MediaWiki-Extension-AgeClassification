@@ -9,16 +9,17 @@ Enable the AgeClassificationButton. Default is false.
 Link to FSM website:
 * $wgAgeClassificationURL = "www.altersklassifizierung.de";
 
-Link to FSM classification image:
-* $wgAgeClassificationIMG = "yourdomain.org/resources/image/fsm-aks148.png";
-
 Setup of the meta data:
 * $wgAgeClassificationMetaName = "age-de-meta-label";
 * $wgAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";
 
 ## Localization
 
-The extension is localized for the languages "de", "en", "es", "fr", "it", "nl", "pt" and "ru".
+The extension is localized for the languages "de", "en", "es", "fr", "it", "nl", "pt", and "ru".
+
+## Test
+
+Tested with REL1_25, REL1_31, REL1_33, REL1_35_5, REL1_36_3
 
 ## Support
 
