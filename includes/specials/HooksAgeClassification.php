@@ -40,16 +40,17 @@ class AgeClassificationHooks extends Hooks {
 
 		if ( !self::isActive() )  return;
 
-		global $wgAgeClassificationButton, $wgAgeClassificationButtonIMG, $wgAgeClassificationButtonURL;
+		global $wgAgeClassificationButton, $wgAgeClassificationButtonURL;
 
 		if ( !empty( $wgAgeClassificationButton ) &&
-			!empty( $wgAgeClassificationButtonIMG ) &&
 			( ( $wgAgeClassificationButton === 'true' ) || ( $wgAgeClassificationButton === true ) )
 			) {
 
+			$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+			$url = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 			$html = '<img alt="AgeClassification-Button" title="' .
 						$skin->msg( 'ageclassification-msg' )->text() .
-						'"src="//' . $wgAgeClassificationButtonIMG . '" />';
+						'" src="' . $url . '" />';
 			if ( !empty( $wgAgeClassificationButtonURL ) ) {
 				$html = '<a href="//' . $wgAgeClassificationButtonURL . '">' . $html . '</a>';
 			}
@@ -57,6 +58,8 @@ class AgeClassificationHooks extends Hooks {
 			switch ( $skin->getSkinName() ) {
 				case 'cologneblue' :
 					$html = Html::rawElement( 'div', [ 'class' => 'body' ], $html );
+				break;
+				case 'minerva' :
 				break;
 				case 'modern' :
 				break;
@@ -77,6 +80,6 @@ class AgeClassificationHooks extends Hooks {
 	}
 
 	private static function isSupported( $skinname ) {
-		return in_array( $skinname, [ 'cologneblue', 'modern', 'monobook', 'vector' ] );
+		return in_array( $skinname, [ 'cologneblue', 'minerva', 'modern', 'monobook', 'vector' ] );
 	}
 }
