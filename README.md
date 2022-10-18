@@ -30,4 +30,6 @@ The [SkinBuildSidebar](https://www.mediawiki.org/wiki/Manual:Hooks/SkinBuildSide
 
 A solution for this circumstance is not yet known.
 As a minimal solution, a simple text link to the “Freiwillige Selbstkontrolle Multimedia-Diensteanbieter e.V.” is now given. The most important thing is that the metadata insertion still works, so missing image in the navigation bar seems to be tolerable.
-This occurs in Skin Vector since REL1_35 and Skins Cologne Blue, Modern and MonoBook since REL1_37. Skin Timeless still works as usual.
+This occurs in Skins Cologne Blue, Modern, MonoBook and Vector since REL1_37. Skin Timeless still works as usual.
+
+For Skins MonoBook and Vector in REL1_35 and REL1_36 see these [Hacks](https://www.mediawiki.org/wiki/Extension:WimaAdvertising#Hacks).

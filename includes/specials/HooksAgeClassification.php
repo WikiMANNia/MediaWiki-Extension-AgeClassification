@@ -26,7 +26,7 @@ class AgeClassificationHooks extends Hooks {
 			break;
 			case 'vector' :
 			case 'vector-2022' :
-				if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+				if ( version_compare( $wgVersion, '1.37', '<' ) ) {
 					$out->addModuleStyles( 'ext.ageclassification.common' );
 					$out->addModuleStyles( 'ext.ageclassification.vector' );
 				}
@@ -94,11 +94,9 @@ class AgeClassificationHooks extends Hooks {
 			break;
 			case 'modern' :
 			case 'monobook' :
-				$sidebar_element = ( version_compare( $wgVersion, '1.37', '>=' ) ) ? [ $txt_element ] : $img_element;
-			break;
 			case 'vector' :
 			case 'vector-2022' :
-				$sidebar_element = ( version_compare( $wgVersion, '1.35', '>=' ) ) ? [ $txt_element ] : $img_element;
+				$sidebar_element = ( version_compare( $wgVersion, '1.37', '>=' ) ) ? [ $txt_element ] : $img_element;
 			break;
 			default :
 				$sidebar_element = $img_element;
