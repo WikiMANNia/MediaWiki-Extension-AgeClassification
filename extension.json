@@ -1,13 +1,12 @@
 {
 	"name": "AgeClassification",
-	"author": "WikiMANNia",
+	"author": "[//wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.1.0",
+	"version": "1.3.0",
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
 	"config": {
-		"AgeClassificationButton": false,
 		"AgeClassificationButtonURL": "www.altersklassifizierung.de/",
 		"AgeClassificationMetaName": "age-de-meta-label",
 		"AgeClassificationMetaContent": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"
@@ -34,11 +33,11 @@
 		"ext.ageclassification.modern": {
 			"styles": "css/Modern.css"
 		},
-		"ext.ageclassification.minerva": {
-			"styles": "css/Minerva.css"
-		},
 		"ext.ageclassification.monobook": {
 			"styles": "css/Monobook.css"
+		},
+		"ext.ageclassification.timeless": {
+			"styles": "css/Timeless.css"
 		},
 		"ext.ageclassification.vector": {
 			"styles": "css/Vector.css"

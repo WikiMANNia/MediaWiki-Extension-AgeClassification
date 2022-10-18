@@ -10,14 +10,37 @@ class AgeClassificationHooks extends Hooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 
+		global $wgVersion;
+
 		if ( !self::isActive() )  return;
 
 		$skinname = $skin->getSkinName();
-		$out->addModuleStyles( 'ext.ageclassification.common' );
-		if ( self::isSupported( $skinname ) ) {
-			$out->addModuleStyles( 'ext.ageclassification.' . $skinname );
-		} else {
-			wfLogWarning( 'Skin ' . $skinname . ' not supported by AgeClassification.' . "\n" );
+		switch ( $skinname ) {
+			case 'cologneblue' :
+			case 'modern' :
+			case 'monobook' :
+				if ( version_compare( $wgVersion, '1.37', '<' ) ) {
+					$out->addModuleStyles( 'ext.ageclassification.common' );
+					$out->addModuleStyles( 'ext.ageclassification.' . $skinname );
+				}
+			break;
+			case 'vector' :
+			case 'vector-2022' :
+				if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+					$out->addModuleStyles( 'ext.ageclassification.common' );
+					$out->addModuleStyles( 'ext.ageclassification.vector' );
+				}
+			break;
+			case 'timeless' :
+				$out->addModuleStyles( 'ext.ageclassification.common' );
+				$out->addModuleStyles( 'ext.donatebutton.' . $skinname );
+			break;
+			case 'minerva' :
+			case 'fallback' :
+			break;
+			default :
+				wfLogWarning( 'Skin ' . $skinname . ' not supported by AgeClassification.' . "\n" );
+			break;
 		}
 
 		// FSM-Altersklassifizierungssystems: www.altersklassifizierung.de
@@ -40,46 +63,58 @@ class AgeClassificationHooks extends Hooks {
 
 		if ( !self::isActive() )  return;
 
-		global $wgAgeClassificationButton, $wgAgeClassificationButtonURL;
+		global $wgAgeClassificationButtonURL;
+		global $wgVersion;
 
-		if ( !empty( $wgAgeClassificationButton ) &&
-			( ( $wgAgeClassificationButton === 'true' ) || ( $wgAgeClassificationButton === true ) )
-			) {
+		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
+		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
+		$url_site = '';
+		$img_element = '<img alt="AgeClassification-Button" title="' . $txt_site .
+					'" src="' . $url_file . '" />';
 
-			$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
-			$url = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
-			$html = '<img alt="AgeClassification-Button" title="' .
-						$skin->msg( 'ageclassification-msg' )->text() .
-						'" src="' . $url . '" />';
-			if ( !empty( $wgAgeClassificationButtonURL ) ) {
-				$html = '<a href="//' . $wgAgeClassificationButtonURL . '">' . $html . '</a>';
-			}
-
-			switch ( $skin->getSkinName() ) {
-				case 'cologneblue' :
-					$html = Html::rawElement( 'div', [ 'class' => 'body' ], $html );
-				break;
-				case 'minerva' :
-				break;
-				case 'modern' :
-				break;
-				case 'monobook' :
-				break;
-				case 'vector' :
-				break;
-			}
-
-			$bar['ageclassification'] = $html;
+		if ( !empty( $wgAgeClassificationButtonURL ) ) {
+			$url_site = $wgAgeClassificationButtonURL;
+			$img_element = '<a href="//' . $url_site . '">' . $img_element . '</a>';
 		}
+
+		$txt_element = [
+			'text'   => $txt_site,
+			'href'   => $url_site,
+			'id'     => 'n-ageclassification',
+			'active' => true
+		];
+
+		$sidebar_element = $img_element;
+
+		switch ( $skin->getSkinName() ) {
+			case 'cologneblue' :
+				$img_element = Html::rawElement( 'div', [ 'class' => 'body' ], $img_element );
+				$sidebar_element = ( version_compare( $wgVersion, '1.37', '>=' ) ) ? [ $txt_element ] : $img_element;
+			break;
+			case 'modern' :
+			case 'monobook' :
+				$sidebar_element = ( version_compare( $wgVersion, '1.37', '>=' ) ) ? [ $txt_element ] : $img_element;
+			break;
+			case 'vector' :
+			case 'vector-2022' :
+				$sidebar_element = ( version_compare( $wgVersion, '1.35', '>=' ) ) ? [ $txt_element ] : $img_element;
+			break;
+			default :
+				$sidebar_element = $img_element;
+			break;
+		}
+
+		$bar['ageclassification'] = $sidebar_element;
 	}
 
 	private static function isActive() {
 		global $wgAgeClassificationButton;
 
-		return ( isset( $wgAgeClassificationButton ) && ( $wgAgeClassificationButton === true ) );
+		return ( isset( $wgAgeClassificationButton ) && ( ( $wgAgeClassificationButton === true ) || ( $wgAgeClassificationButton === 'true' ) ) );
 	}
 
 	private static function isSupported( $skinname ) {
-		return in_array( $skinname, [ 'cologneblue', 'minerva', 'modern', 'monobook', 'vector' ] );
+		return in_array( $skinname, [ 'cologneblue', 'minerva', 'modern', 'monobook', 'timeless', 'vector', 'vector-2022' ] );
 	}
 }
