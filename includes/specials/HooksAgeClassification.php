@@ -75,7 +75,7 @@ class AgeClassificationHooks extends Hooks {
 
 		if ( !empty( $wgAgeClassificationButtonURL ) ) {
 			$url_site = $wgAgeClassificationButtonURL;
-			$img_element = '<a href="//' . $url_site . '">' . $img_element . '</a>';
+			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
 		}
 
 		$txt_element = [
