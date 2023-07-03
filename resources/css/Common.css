@@ -5,9 +5,11 @@
 	width: auto;
 }
 #p-ageclassification .body,
+#p-ageclassification .mw-portlet-body,
 #p-ageclassification .pBody {
-	background-color: transparent;
-	border: 0;
+	background-color: transparent !important;
+	background-image: none !important;
+	border: 0 !important;
 	padding: 0;
 	text-align: center;
 }
