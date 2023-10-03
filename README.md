@@ -35,7 +35,7 @@ Further skins may require additional adjustments, which would have to be made in
 
 ## Compatibility
 
-This extension works from REL1_25 and has been tested up to MediaWiki version `1.37`.
+This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.11`, `1.39.4` and, `1.40.0`.
 
 ## Version history
 
@@ -59,3 +59,7 @@ This extension works from REL1_25 and has been tested up to MediaWiki version `1
 1.3.1
 
 * A customised skin may be used.
+
+1.4.0
+
+- Support for REL1_35+ added.
