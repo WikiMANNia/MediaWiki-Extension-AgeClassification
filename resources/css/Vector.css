@@ -1,7 +1,13 @@
-/* CSS placed here will be applied to Vector skin */
+/* CSS for Vector skin */
 
 #p-ageclassification .body {
 	background-image: none !important;
 	margin-left: 0 !important;
 	margin-top: .3em;
+}
+#p-ageclassification div.vector-menu-content {
+	background-color: inherit !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	margin-left: 0em !important;
 }

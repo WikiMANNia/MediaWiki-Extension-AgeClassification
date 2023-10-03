@@ -19,21 +19,14 @@ class AgeClassificationHooks extends Hooks {
 			case 'cologneblue' :
 			case 'modern' :
 			case 'monobook' :
-				if ( version_compare( $wgVersion, '1.37', '<' ) ) {
-					$out->addModuleStyles( 'ext.ageclassification.common' );
-					$out->addModuleStyles( 'ext.ageclassification.' . $skinname );
-				}
+			case 'timeless' :
+				$out->addModuleStyles( 'ext.ageclassification.common' );
+				$out->addModuleStyles( 'ext.ageclassification.' . $skinname );
 			break;
 			case 'vector' :
 			case 'vector-2022' :
-				if ( version_compare( $wgVersion, '1.37', '<' ) ) {
-					$out->addModuleStyles( 'ext.ageclassification.common' );
-					$out->addModuleStyles( 'ext.ageclassification.vector' );
-				}
-			break;
-			case 'timeless' :
 				$out->addModuleStyles( 'ext.ageclassification.common' );
-				$out->addModuleStyles( 'ext.donatebutton.' . $skinname );
+				$out->addModuleStyles( 'ext.ageclassification.vector' );
 			break;
 			case 'minerva' :
 			case 'fallback' :
@@ -78,32 +71,13 @@ class AgeClassificationHooks extends Hooks {
 			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
 		}
 
-		$txt_element = [
-			'text'   => $txt_site,
-			'href'   => $url_site,
-			'id'     => 'n-ageclassification',
-			'active' => true
-		];
-
-		$sidebar_element = $img_element;
-
 		switch ( $skin->getSkinName() ) {
 			case 'cologneblue' :
 				$img_element = Html::rawElement( 'div', [ 'class' => 'body' ], $img_element );
-				$sidebar_element = ( version_compare( $wgVersion, '1.37', '>=' ) ) ? [ $txt_element ] : $img_element;
-			break;
-			case 'modern' :
-			case 'monobook' :
-			case 'vector' :
-			case 'vector-2022' :
-				$sidebar_element = ( version_compare( $wgVersion, '1.37', '>=' ) ) ? [ $txt_element ] : $img_element;
-			break;
-			default :
-				$sidebar_element = $img_element;
 			break;
 		}
 
-		$bar['ageclassification'] = $sidebar_element;
+		$bar['ageclassification'] = $img_element;
 	}
 
 	private static function isActive() {
