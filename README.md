@@ -6,6 +6,14 @@ The maintenance of the MediaWiki extension [AgeClassification](https://www.media
 
 El mantenimiento de la extensión de MediaWiki [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) está gestionado por WikiMANNia.
 
+## MediaWiki
+
+MediaWiki ist männerfeindlich, siehe [T323956](https://phabricator.wikimedia.org/T323956).
+
+MediaWiki is hostile to Men, see [T323956](https://phabricator.wikimedia.org/T323956).
+
+MediaWiki es hostil a los hombres, véase [T323956](https://phabricator.wikimedia.org/T323956).
+
 ## Description
 
 Fügt dem Wiki eine Altersklassifizierung von „Freiwillige Selbstkontrolle Multimedia-Diensteanbieter e.V.“ (Voluntary Self-Regulation of Multimedia Service Providers) (FSM) hinzu.
