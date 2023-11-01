@@ -3,26 +3,41 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
+	"config_prefix": "wm",
 	"config": {
-		"AgeClassificationButtonURL": "https://www.altersklassifizierung.de/",
-		"AgeClassificationMetaName": "age-de-meta-label",
-		"AgeClassificationMetaContent": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"
+		"AgeClassificationButtonURL": {
+			"type": "string",
+			"value": "https://www.altersklassifizierung.de/"
+		},
+		"AgeClassificationMetaName": {
+			"type": "string",
+			"value": "age-de-meta-label"
+		},
+		"AgeClassificationMetaContent": {
+			"type": "string",
+			"value": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"
+		}
 	},
-	"manifest_version": 1,
+	"manifest_version": 2,
 	"type": "other",
 	"AutoloadClasses": {
-		"AgeClassificationHooks": "includes/specials/HooksAgeClassification.php"
+		"AgeClassificationHooks": "includes/Hooks.php"
 	},
 	"Hooks": {
-	    "BeforePageDisplay": "AgeClassificationHooks::onBeforePageDisplay",
-	    "SkinAfterPortlet": "AgeClassificationHooks::onSkinAfterPortlet",
-		"SkinBuildSidebar": "AgeClassificationHooks::onSkinBuildSidebar"
+	    "BeforePageDisplay": "main",
+	    "SkinAfterPortlet": "main",
+		"SkinBuildSidebar": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "AgeClassificationHooks"
+		}
 	},
 	"MessagesDirs": {
 		"AgeClassification": [ "i18n" ]

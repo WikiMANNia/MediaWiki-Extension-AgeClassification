@@ -6,14 +6,6 @@ The maintenance of the MediaWiki extension [AgeClassification](https://www.media
 
 El mantenimiento de la extensión de MediaWiki [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) está gestionado por WikiMANNia.
 
-## MediaWiki
-
-MediaWiki ist männerfeindlich, siehe [T323956](https://phabricator.wikimedia.org/T323956).
-
-MediaWiki is hostile to Men, see [T323956](https://phabricator.wikimedia.org/T323956).
-
-MediaWiki es hostil a los hombres, véase [T323956](https://phabricator.wikimedia.org/T323956).
-
 ## Description
 
 Fügt dem Wiki eine Altersklassifizierung von „Freiwillige Selbstkontrolle Multimedia-Diensteanbieter e.V.“ (Voluntary Self-Regulation of Multimedia Service Providers) (FSM) hinzu.
@@ -23,14 +15,14 @@ Adds an age classification from “Freiwillige Selbstkontrolle Multimedia-Dienst
 ## Use
 
 Enable the AgeClassificationButton. Default is `false`.
-* `$wgAgeClassificationButton = true;`
+* `$wmAgeClassificationButton = true;`
 
 Link to FSM website:
-* `$wgAgeClassificationURL = "https://www.altersklassifizierung.de";`
+* `$wmAgeClassificationURL = "https://www.altersklassifizierung.de";`
 
 Setup of the meta data:
-* `$wgAgeClassificationMetaName = "age-de-meta-label";`
-* `$wgAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";`
+* `$wmAgeClassificationMetaName = "age-de-meta-label";`
+* `$wmAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";`
 
 ## Localization
 
@@ -43,7 +35,7 @@ Further skins may require additional adjustments, which would have to be made in
 
 ## Compatibility
 
-This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.11`, `1.39.4` and, `1.40.0`.
+This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.13`, `1.39.5` and `1.40.1`.
 
 ## Version history
 
@@ -54,7 +46,7 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 1.1.0
 
 * SVG images "fsm-aks.svg" optimized
-* Global variable `wgAgeClassificationButtonIMG` removed, now the image in the folder `resources/images` will be accessed.
+* Global variable `wmAgeClassificationButtonIMG` removed, now the image in the folder `resources/images` will be accessed.
 
 1.2.0
 
@@ -71,3 +63,8 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 1.4.0
 
 - Support for REL1_35+ added.
+
+1.5.0
+
+- Changed "configuration schema", replaced manifest version 1 with version 2 and changed the prefix of the configuration variables from default to `wm`.
+- Replaced class “AgeClassificationHooks” extending class “Hooks” with class implementing interfaces.
