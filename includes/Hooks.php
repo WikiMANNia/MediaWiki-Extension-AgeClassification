@@ -129,9 +129,14 @@ class AgeClassificationHooks implements
 			$url_site = $wmAgeClassificationButtonURL;
 		}
 
-		$txt_element = [
+		$txt_item = [
 			'text'   => $txt_site,
 			'href'   => $url_site,
+			'id'     => 'n-ageclassification',
+			'active' => true
+		];
+		$empty_item = [
+			'text'   => '',
 			'id'     => 'n-ageclassification',
 			'active' => true
 		];
@@ -146,8 +151,11 @@ class AgeClassificationHooks implements
 			case 'vector-2022' :
 			break;
 			case 'timeless' :
+				// Dirty hack for skin Timeless
+				$sidebar_element = [ $empty_item ];
+			break;
 			default :
-				$sidebar_element = [ $txt_element ];
+				$sidebar_element = [ $txt_item ];
 			break;
 		}
 
