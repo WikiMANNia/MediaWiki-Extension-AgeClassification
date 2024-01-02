@@ -76,3 +76,4 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 1.5.2
 
 - `MediaWiki\Config\ConfigFactory::getDefaultInstance` -> `MediaWikiServices::getInstance()->getConfigFactory()`
+- Remove dead code.

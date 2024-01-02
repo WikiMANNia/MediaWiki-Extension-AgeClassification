@@ -121,8 +121,6 @@ class AgeClassificationHooks implements
 
 		global $wmAgeClassificationButtonURL;
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'main' );
-		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
 		$url_site = '';
 
