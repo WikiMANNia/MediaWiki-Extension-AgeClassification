@@ -3,7 +3,7 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},

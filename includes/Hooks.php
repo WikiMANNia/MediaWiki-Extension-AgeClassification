@@ -9,6 +9,7 @@
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Skins\Hook\SkinAfterPortletHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
@@ -73,7 +74,7 @@ class AgeClassificationHooks implements
 
 		global $wmAgeClassificationButtonURL;
 
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'main' );
 		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
 		$url_site = '';
@@ -120,7 +121,7 @@ class AgeClassificationHooks implements
 
 		global $wmAgeClassificationButtonURL;
 
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'main' );
 		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
 		$url_site = '';

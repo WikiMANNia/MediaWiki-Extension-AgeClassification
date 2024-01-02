@@ -72,3 +72,7 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 1.5.1
 
 - Dirty hack for skin [Timeless](https://www.mediawiki.org/wiki/Skin:Timeless).
+
+1.5.2
+
+- `MediaWiki\Config\ConfigFactory::getDefaultInstance` -> `MediaWikiServices::getInstance()->getConfigFactory()`
