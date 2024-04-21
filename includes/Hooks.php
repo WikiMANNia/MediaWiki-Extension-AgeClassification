@@ -35,6 +35,7 @@ class AgeClassificationHooks implements
 		switch ( $skinname ) {
 			case 'cologneblue' :
 			case 'modern' :
+			case 'monaco' :
 			case 'monobook' :
 			case 'timeless' :
 				$out->addModuleStyles( 'ext.ageclassification.common' );
@@ -45,6 +46,7 @@ class AgeClassificationHooks implements
 				$out->addModuleStyles( 'ext.ageclassification.common' );
 				$out->addModuleStyles( 'ext.ageclassification.vector' );
 			break;
+			case 'minerva' :
 			case 'fallback' :
 			break;
 			default :
@@ -93,6 +95,7 @@ class AgeClassificationHooks implements
 				$img_element = Html::rawElement( 'div', [ 'class' => 'body' ], $img_element );
 				$sidebar_element['ageclassification'] = $img_element;
 			case 'modern' :
+			case 'monaco' :
 			case 'monobook' :
 			case 'timeless' :
 			case 'vector' :
@@ -145,6 +148,7 @@ class AgeClassificationHooks implements
 		switch ( $skin->getSkinName() ) {
 			case 'cologneblue' :
 			case 'modern' :
+			case 'monaco' :
 			case 'monobook' :
 			case 'vector' :
 			case 'vector-2022' :
@@ -161,6 +165,35 @@ class AgeClassificationHooks implements
 		$bar['ageclassification'] = $sidebar_element;
 	}
 
+	/**
+	 * Load sidebar ad for Monaco skin.
+	 *
+	 * @return bool
+	 */
+	public static function onMonacoSidebarEnd( $skin, &$html ) {
+
+		if ( !self::isActive() )  return;
+
+		global $wmAgeClassificationButtonURL;
+
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'main' );
+		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
+		$txt_site = wfMessage( 'ageclassification-msg' )->text();
+		$url_site = '';
+		$img_element = '<img alt="AgeClassification-Button" title="' . $txt_site .
+					'" src="' . $url_file . '" height=auto width=206 />';
+
+		if ( !empty( $wmAgeClassificationButtonURL ) ) {
+			$url_site = $wmAgeClassificationButtonURL;
+			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
+		}
+
+		$html .= "<p>$txt_site</p>";
+		$html .= $img_element;
+
+		return true;
+	}
+
 	private static function isActive() {
 		global $wmAgeClassificationButton;
 
@@ -168,6 +201,6 @@ class AgeClassificationHooks implements
 	}
 
 	private static function isSupported( $skinname ) {
-		return in_array( $skinname, [ 'cologneblue', 'modern', 'monobook', 'timeless', 'vector', 'vector-2022' ] );
+		return in_array( $skinname, [ 'cologneblue', 'minerva', 'modern', 'monaco', 'monobook', 'timeless', 'vector', 'vector-2022' ] );
 	}
 }

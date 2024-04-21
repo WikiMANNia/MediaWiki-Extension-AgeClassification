@@ -77,3 +77,7 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 
 - `MediaWiki\Config\ConfigFactory::getDefaultInstance` -> `MediaWikiServices::getInstance()->getConfigFactory()`
 - Remove dead code.
+
+1.6.0
+
+- Dirty hack for skin [Monaco](https://www.mediawiki.org/wiki/Skin:Monaco).

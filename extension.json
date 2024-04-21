@@ -3,7 +3,7 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.5.2",
+	"version": "1.6.0",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
@@ -31,6 +31,7 @@
 	},
 	"Hooks": {
 	    "BeforePageDisplay": "main",
+		"MonacoSidebarEnd": "main",
 	    "SkinAfterPortlet": "main",
 		"SkinBuildSidebar": "main"
 	},
@@ -51,6 +52,9 @@
 		},
 		"ext.ageclassification.modern": {
 			"styles": "css/Modern.css"
+		},
+		"ext.ageclassification.monaco": {
+			"styles": "css/Monaco.css"
 		},
 		"ext.ageclassification.monobook": {
 			"styles": "css/Monobook.css"
