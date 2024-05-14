@@ -3,10 +3,11 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.3.2",
+	"version": "1.6.0",
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
 	"config": {
+		"_prefix": "wm",
 		"AgeClassificationButtonURL": "https://www.altersklassifizierung.de/",
 		"AgeClassificationMetaName": "age-de-meta-label",
 		"AgeClassificationMetaContent": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"
@@ -14,10 +15,11 @@
 	"manifest_version": 1,
 	"type": "other",
 	"AutoloadClasses": {
-		"AgeClassificationHooks": "includes/specials/HooksAgeClassification.php"
+		"AgeClassificationHooks": "includes/Hooks.php"
 	},
 	"Hooks": {
 	    "BeforePageDisplay": "AgeClassificationHooks::onBeforePageDisplay",
+	    "MonacoSidebarEnd": "AgeClassificationHooks::onMonacoSidebarEnd",
 		"SkinBuildSidebar": "AgeClassificationHooks::onSkinBuildSidebar"
 	},
 	"MessagesDirs": {
@@ -32,6 +34,9 @@
 		},
 		"ext.ageclassification.modern": {
 			"styles": "css/Modern.css"
+		},
+		"ext.ageclassification.monaco": {
+			"styles": "css/Monaco.css"
 		},
 		"ext.ageclassification.monobook": {
 			"styles": "css/Monobook.css"

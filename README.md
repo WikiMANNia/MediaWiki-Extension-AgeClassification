@@ -1,10 +1,10 @@
 # MediaWiki AgeClassification
 
-Die Pflege der MediaWiki-Erweiterung [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) wird von WikiMANNia verwaltet.
+Die Pflege der MediaWiki-Erweiterung [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification/de) wird von WikiMANNia verwaltet.
 
 The maintenance of the MediaWiki extension [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) is managed by WikiMANNia.
 
-El mantenimiento de la extensión de MediaWiki [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) está gestionado por WikiMANNia.
+El mantenimiento de la extensión de MediaWiki [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification/es) está gestionado por WikiMANNia.
 
 ## Description
 
@@ -15,14 +15,14 @@ Adds an age classification from “Freiwillige Selbstkontrolle Multimedia-Dienst
 ## Use
 
 Enable the AgeClassificationButton. Default is `false`.
-* `$wgAgeClassificationButton = true;`
+* `$wmAgeClassificationButton = true;`
 
 Link to FSM website:
-* `$wgAgeClassificationURL = "https://www.altersklassifizierung.de";`
+* `$wmAgeClassificationURL = "https://www.altersklassifizierung.de";`
 
 Setup of the meta data:
-* `$wgAgeClassificationMetaName = "age-de-meta-label";`
-* `$wgAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";`
+* `$wmAgeClassificationMetaName = "age-de-meta-label";`
+* `$wmAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";`
 
 ## Localization
 
@@ -46,7 +46,7 @@ This extension works from REL1_25 and has been tested up to MediaWiki version `1
 1.1.0
 
 * SVG images "fsm-aks.svg" optimized
-* Global variable `wgAgeClassificationButtonIMG` removed, now the image in the folder `resources/images` will be accessed.
+* Global variable `wmAgeClassificationButtonIMG` removed, now the image in the folder `resources/images` will be accessed.
 
 1.2.0
 
@@ -59,3 +59,7 @@ This extension works from REL1_25 and has been tested up to MediaWiki version `1
 1.3.1
 
 * A customised skin may be used.
+
+1.6.0
+
+- Support for skin [Monaco](https://www.mediawiki.org/wiki/Skin:Monaco).
