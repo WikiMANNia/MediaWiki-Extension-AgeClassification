@@ -1,10 +1,10 @@
 # MediaWiki AgeClassification
 
-Die Pflege der MediaWiki-Erweiterung [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) wird von WikiMANNia verwaltet.
+Die Pflege der MediaWiki-Erweiterung [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification/de) wird von WikiMANNia verwaltet.
 
 The maintenance of the MediaWiki extension [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) is managed by WikiMANNia.
 
-El mantenimiento de la extensión de MediaWiki [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification) está gestionado por WikiMANNia.
+El mantenimiento de la extensión de MediaWiki [AgeClassification](https://www.mediawiki.org/wiki/Extension:AgeClassification/es) está gestionado por WikiMANNia.
 
 ## Description
 
@@ -35,7 +35,7 @@ Further skins may require additional adjustments, which would have to be made in
 
 ## Compatibility
 
-This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.13`, `1.39.5` and `1.40.1`.
+This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.14`, `1.39.7` and `1.41.1`.
 
 ## Version history
 
@@ -80,4 +80,4 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 
 1.6.0
 
-- Dirty hack for skin [Monaco](https://www.mediawiki.org/wiki/Skin:Monaco).
+- Support for skin [Monaco](https://www.mediawiki.org/wiki/Skin:Monaco).
