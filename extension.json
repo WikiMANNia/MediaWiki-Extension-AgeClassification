@@ -3,11 +3,11 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.6.0",
+	"version": "1.6.1",
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
 	"config": {
-		"_prefix": "wm",
+		"AgeClassificationButton": true,
 		"AgeClassificationButtonURL": "https://www.altersklassifizierung.de/",
 		"AgeClassificationMetaName": "age-de-meta-label",
 		"AgeClassificationMetaContent": "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all"

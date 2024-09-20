@@ -2,6 +2,42 @@
 
 class AgeClassificationHooks extends Hooks {
 
+	private static $instance;
+
+	private $button_active;
+	private $meta_content;
+	private $meta_name;
+	private $url_site;
+
+	/**
+	 * @param GlobalVarConfig $config
+	 */
+	public function __construct() {
+
+		global $wgAgeClassificationButton, $wgAgeClassificationButtonURL;
+		global $wgAgeClassificationMetaContent, $wgAgeClassificationMetaName;
+
+		$this->button_active = ( isset( $wgAgeClassificationButton ) && ( $wgAgeClassificationButton === true ) );
+		$this->meta_content = $wgAgeClassificationMetaContent;
+		$this->meta_name = $wgAgeClassificationMetaName;
+		$this->url_site = $wgAgeClassificationButtonURL;
+	}
+
+	private function __clone() { }
+
+	/**
+	 * @return self
+	 */
+	public static function getInstance() {
+		if ( self::$instance === null ) {
+			// Erstelle eine neue Instanz, falls noch keine vorhanden ist.
+			self::$instance = new self();
+		}
+
+		// Liefere immer die selbe Instanz.
+		return self::$instance;
+	}
+
 	/**
 	 * https://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay
 	 *
@@ -9,8 +45,6 @@ class AgeClassificationHooks extends Hooks {
 	 * @param Skin $skin
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-
-		global $wgVersion;
 
 		if ( !self::isActive() )  return;
 
@@ -38,9 +72,8 @@ class AgeClassificationHooks extends Hooks {
 		}
 
 		// FSM-Altersklassifizierungssystems: www.altersklassifizierung.de
-		global $wmAgeClassificationMetaName, $wmAgeClassificationMetaContent;
-		if ( !empty( $wmAgeClassificationMetaName ) && !empty( $wmAgeClassificationMetaContent ) ) {
-			$out->addMeta( $wmAgeClassificationMetaName, $wmAgeClassificationMetaContent );
+		if ( !empty( self::getInstance()->meta_name ) && !empty( self::getInstance()->meta_content ) ) {
+			$out->addMeta( self::getInstance()->meta_name, self::getInstance()->meta_content );
 		}
 	}
 
@@ -57,18 +90,15 @@ class AgeClassificationHooks extends Hooks {
 
 		if ( !self::isActive() )  return;
 
-		global $wmAgeClassificationButtonURL;
-		global $wgVersion;
-
 		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+
 		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
-		$url_site = '';
+		$url_site = self::getInstance()->url_site;
 		$img_element = '<img alt="AgeClassification-Button" title="' . $txt_site .
 					'" src="' . $url_file . '" />';
 
-		if ( !empty( $wmAgeClassificationButtonURL ) ) {
-			$url_site = $wmAgeClassificationButtonURL;
+		if ( !empty( $url_site ) ) {
 			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
 		}
 
@@ -90,18 +120,15 @@ class AgeClassificationHooks extends Hooks {
 
 		if ( !self::isActive() )  return;
 
-		global $wmAgeClassificationButtonURL;
-
 		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
 
 		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = wfMessage( 'ageclassification-msg' )->text();
-		$url_site = '';
+		$url_site = self::getInstance()->url_site;
 		$img_element = '<img alt="AgeClassification-Button" title="' . $txt_site .
 					'" src="' . $url_file . '" height=auto width=206 />';
 
-		if ( !empty( $wmAgeClassificationButtonURL ) ) {
-			$url_site = $wmAgeClassificationButtonURL;
+		if ( !empty( $url_site ) ) {
 			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
 		}
 
@@ -112,9 +139,8 @@ class AgeClassificationHooks extends Hooks {
 	}
 
 	private static function isActive() {
-		global $wmAgeClassificationButton;
 
-		return ( isset( $wmAgeClassificationButton ) && ( ( $wmAgeClassificationButton === true ) || ( $wmAgeClassificationButton === 'true' ) ) );
+		return self::getInstance()->button_active;
 	}
 
 	private static function isSupported( $skinname ) {
