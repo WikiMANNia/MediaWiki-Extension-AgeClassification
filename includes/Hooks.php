@@ -20,6 +20,41 @@ class AgeClassificationHooks implements
 	SkinBuildSidebarHook
 {
 
+	private static $instance;
+
+	private bool $button_active;
+	private string $meta_content;
+	private string $meta_name;
+	private string $url_site;
+
+	/**
+	 * @param GlobalVarConfig $config
+	 */
+	public function __construct() {
+
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'ageclassification' );
+
+		$this->button_active = ( $config->get( 'AgeClassificationButton' ) === true );
+		$this->meta_content = $config->get( 'AgeClassificationMetaContent' );
+		$this->meta_name = $config->get( 'AgeClassificationMetaName' );
+		$this->url_site = $config->get( 'AgeClassificationButtonURL' );
+	}
+
+	private function __clone() { }
+
+	/**
+	 * @return self
+	 */
+	public static function getInstance() {
+		if ( self::$instance === null ) {
+			// Erstelle eine neue Instanz, falls noch keine vorhanden ist.
+			self::$instance = new self();
+		}
+
+		// Liefere immer die selbe Instanz.
+		return self::$instance;
+	}
+
 	/**
 	 * https://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay
 	 *
@@ -55,9 +90,8 @@ class AgeClassificationHooks implements
 		}
 
 		// FSM-Altersklassifizierungssystems: www.altersklassifizierung.de
-		global $wmAgeClassificationMetaName, $wmAgeClassificationMetaContent;
-		if ( !empty( $wmAgeClassificationMetaName ) && !empty( $wmAgeClassificationMetaContent ) ) {
-			$out->addMeta( $wmAgeClassificationMetaName, $wmAgeClassificationMetaContent );
+		if ( !empty( $this->meta_name ) && !empty( $this->meta_content ) ) {
+			$out->addMeta( $this->meta_name, $this->meta_content );
 		}
 	}
 
@@ -74,17 +108,15 @@ class AgeClassificationHooks implements
 
 		if ( !self::isActive() )  return;
 
-		global $wmAgeClassificationButtonURL;
-
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'main' );
+
 		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
-		$url_site = '';
+		$url_site = $this->url_site;
 		$img_element = '<img alt="AgeClassification-Button" title="' . $txt_site .
 					'" src="' . $url_file . '" />';
 
-		if ( !empty( $wmAgeClassificationButtonURL ) ) {
-			$url_site = $wmAgeClassificationButtonURL;
+		if ( !empty( $url_site ) ) {
 			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
 		}
 
@@ -122,14 +154,8 @@ class AgeClassificationHooks implements
 
 		if ( !self::isActive() )  return;
 
-		global $wmAgeClassificationButtonURL;
-
 		$txt_site = $skin->msg( 'ageclassification-msg' )->text();
-		$url_site = '';
-
-		if ( !empty( $wmAgeClassificationButtonURL ) ) {
-			$url_site = $wmAgeClassificationButtonURL;
-		}
+		$url_site = $this->url_site;
 
 		$txt_item = [
 			'text'   => $txt_site,
@@ -174,17 +200,15 @@ class AgeClassificationHooks implements
 
 		if ( !self::isActive() )  return;
 
-		global $wmAgeClassificationButtonURL;
-
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'main' );
+
 		$url_file = $config->get( 'ExtensionAssetsPath' ) . '/AgeClassification/resources/images/fsm-aks.svg';
 		$txt_site = wfMessage( 'ageclassification-msg' )->text();
-		$url_site = '';
+		$url_site = self::getInstance()->url_site;
 		$img_element = '<img alt="AgeClassification-Button" title="' . $txt_site .
 					'" src="' . $url_file . '" height=auto width=206 />';
 
-		if ( !empty( $wmAgeClassificationButtonURL ) ) {
-			$url_site = $wmAgeClassificationButtonURL;
+		if ( !empty( $url_site ) ) {
 			$img_element = '<a href="' . $url_site . '">' . $img_element . '</a>';
 		}
 
@@ -195,9 +219,8 @@ class AgeClassificationHooks implements
 	}
 
 	private static function isActive() {
-		global $wmAgeClassificationButton;
 
-		return ( isset( $wmAgeClassificationButton ) && ( ( $wmAgeClassificationButton === true ) || ( $wmAgeClassificationButton === 'true' ) ) );
+		return self::getInstance()->button_active;
 	}
 
 	private static function isSupported( $skinname ) {

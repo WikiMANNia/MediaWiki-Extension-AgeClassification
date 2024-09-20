@@ -3,14 +3,20 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.6.0",
+	"version": "1.6.1",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
-	"config_prefix": "wm",
+	"ConfigRegistry": {
+		"ageclassification": "GlobalVarConfig::newInstance"
+	},
 	"config": {
+		"AgeClassificationButton": {
+			"type": "boolean",
+			"value": "true"
+		},
 		"AgeClassificationButtonURL": {
 			"type": "string",
 			"value": "https://www.altersklassifizierung.de/"

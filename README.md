@@ -15,14 +15,14 @@ Adds an age classification from “Freiwillige Selbstkontrolle Multimedia-Dienst
 ## Use
 
 Enable the AgeClassificationButton. Default is `false`.
-* `$wmAgeClassificationButton = true;`
+* `$wgAgeClassificationButton = true;`
 
 Link to FSM website:
-* `$wmAgeClassificationURL = "https://www.altersklassifizierung.de";`
+* `$wgAgeClassificationURL = "https://www.altersklassifizierung.de";`
 
 Setup of the meta data:
-* `$wmAgeClassificationMetaName = "age-de-meta-label";`
-* `$wmAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";`
+* `$wgAgeClassificationMetaName = "age-de-meta-label";`
+* `$wgAgeClassificationMetaContent = "age=0 hash: yourdigitalcode v=1.0 kind=sl protocol=all";`
 
 ## Localization
 
@@ -35,7 +35,7 @@ Further skins may require additional adjustments, which would have to be made in
 
 ## Compatibility
 
-This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.14`, `1.39.8`, `1.41.2`, and `1.42.1`.
+This extension works from REL1_35 and has been tested up to MediaWiki version `1.35.14`, `1.39.7` and `1.41.1`.
 
 ## Version history
 
@@ -46,7 +46,7 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 1.1.0
 
 * SVG images "fsm-aks.svg" optimized
-* Global variable `wmAgeClassificationButtonIMG` removed, now the image in the folder `resources/images` will be accessed.
+* Global variable `wgAgeClassificationButtonIMG` removed, now the image in the folder `resources/images` will be accessed.
 
 1.2.0
 
@@ -81,3 +81,8 @@ This extension works from REL1_35 and has been tested up to MediaWiki version `1
 1.6.0
 
 - Support for skin [Monaco](https://www.mediawiki.org/wiki/Skin:Monaco).
+
+1.6.1
+
+- Handling global variables with ConfigRegistry and MediaWikiServices
+- Changed the prefix of the configuration variables back to `wg`.
