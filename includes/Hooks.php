@@ -68,6 +68,7 @@ class AgeClassificationHooks implements
 
 		$skinname = $skin->getSkinName();
 		switch ( $skinname ) {
+			case 'citizen' :
 			case 'cologneblue' :
 			case 'modern' :
 			case 'monaco' :
@@ -126,6 +127,7 @@ class AgeClassificationHooks implements
 			case 'cologneblue' :
 				$img_element = Html::rawElement( 'div', [ 'class' => 'body' ], $img_element );
 				$sidebar_element['ageclassification'] = $img_element;
+			case 'citizen' :
 			case 'modern' :
 			case 'monaco' :
 			case 'monobook' :
@@ -172,6 +174,7 @@ class AgeClassificationHooks implements
 		$sidebar_element = [];
 
 		switch ( $skin->getSkinName() ) {
+			case 'citizen' :
 			case 'cologneblue' :
 			case 'modern' :
 			case 'monaco' :
@@ -221,9 +224,5 @@ class AgeClassificationHooks implements
 	private static function isActive() {
 
 		return self::getInstance()->button_active;
-	}
-
-	private static function isSupported( $skinname ) {
-		return in_array( $skinname, [ 'cologneblue', 'minerva', 'modern', 'monaco', 'monobook', 'timeless', 'vector', 'vector-2022' ] );
 	}
 }
