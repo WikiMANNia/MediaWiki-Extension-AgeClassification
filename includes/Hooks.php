@@ -10,6 +10,7 @@ use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Skins\Hook\SkinAfterPortletHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Html\Html;
 
 /**
  * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
