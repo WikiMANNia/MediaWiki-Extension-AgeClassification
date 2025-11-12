@@ -15,7 +15,7 @@
 	"config": {
 		"AgeClassificationButton": {
 			"type": "boolean",
-			"value": "true"
+			"value": true
 		},
 		"AgeClassificationButtonURL": {
 			"type": "string",
