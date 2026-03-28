@@ -3,9 +3,9 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.7.1",
+	"version": "1.8.0",
 	"requires": {
-		"MediaWiki": ">= 1.42.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
@@ -32,19 +32,19 @@
 	},
 	"manifest_version": 2,
 	"type": "other",
-	"AutoloadClasses": {
-		"AgeClassificationHooks": "includes/Hooks.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\AgeClassification\\": "includes/"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\AgeClassification\\Hooks"
+		}
 	},
 	"Hooks": {
 	    "BeforePageDisplay": "main",
 		"MonacoSidebarEnd": "main",
 	    "SkinAfterPortlet": "main",
 		"SkinBuildSidebar": "main"
-	},
-	"HookHandlers": {
-		"main": {
-			"class": "AgeClassificationHooks"
-		}
 	},
 	"MessagesDirs": {
 		"AgeClassification": [ "i18n" ]

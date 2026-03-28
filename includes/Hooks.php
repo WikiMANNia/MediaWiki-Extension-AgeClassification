@@ -6,16 +6,26 @@
  * @ingroup Extensions
  */
 
+namespace MediaWiki\Extension\AgeClassification;
+
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Skins\Hook\SkinAfterPortletHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
-use MediaWiki\MediaWikiServices;
+
 use MediaWiki\Html\Html;
+use MediaWiki\MediaWikiServices;
+
+// Class aliases for multi-version compatibility.
+// These need to be in global scope so phan can pick up on them,
+// and before any use statements that make use of the namespaced names.
+if ( version_compare( MW_VERSION, '1.40', '<' ) ) {
+	if ( !class_exists('MediaWiki\Html\Html') )  class_alias( '\Html', '\MediaWiki\Html\Html' );
+}
 
 /**
  * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
  */
-class AgeClassificationHooks implements
+class Hooks implements
 	BeforePageDisplayHook,
 	SkinAfterPortletHook,
 	SkinBuildSidebarHook
@@ -67,8 +77,8 @@ class AgeClassificationHooks implements
 
 		if ( !self::isActive() )  return;
 
-		$skinname = $skin->getSkinName();
-		switch ( $skinname ) {
+		$skinName = $skin->getSkinName();
+		switch ( $skinName ) {
 			case 'citizen' :
 			case 'cologneblue' :
 			case 'modern' :
@@ -76,18 +86,19 @@ class AgeClassificationHooks implements
 			case 'monobook' :
 			case 'timeless' :
 				$out->addModuleStyles( 'ext.ageclassification.common' );
-				$out->addModuleStyles( 'ext.ageclassification.' . $skinname );
+				$out->addModuleStyles( 'ext.ageclassification.' . $skinName );
 			break;
 			case 'vector' :
 			case 'vector-2022' :
 				$out->addModuleStyles( 'ext.ageclassification.common' );
 				$out->addModuleStyles( 'ext.ageclassification.vector' );
 			break;
+			case 'apioutput' :
 			case 'minerva' :
 			case 'fallback' :
 			break;
 			default :
-				wfLogWarning( 'Skin ' . $skinname . ' not supported by AgeClassification.' . "\n" );
+				wfLogWarning( 'Skin ' . $skinName . ' not supported by AgeClassification.' . "\n" );
 			break;
 		}
 
