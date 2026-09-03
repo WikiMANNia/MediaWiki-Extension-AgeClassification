@@ -15,13 +15,6 @@ use MediaWiki\Hook\SkinBuildSidebarHook;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 
-// Class aliases for multi-version compatibility.
-// These need to be in global scope so phan can pick up on them,
-// and before any use statements that make use of the namespaced names.
-if ( version_compare( MW_VERSION, '1.40', '<' ) ) {
-	if ( !class_exists('MediaWiki\Html\Html') )  class_alias( '\Html', '\MediaWiki\Html\Html' );
-}
-
 /**
  * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
  */
@@ -65,6 +58,10 @@ class Hooks implements
 		// Liefere immer die selbe Instanz.
 		return self::$instance;
 	}
+
+    public static function onRegistration() {
+        Compat::init();
+    }
 
 	/**
 	 * https://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay

@@ -9,6 +9,7 @@
 	},
 	"namemsg": "ageclassification-msg",
 	"descriptionmsg": "ageclassification-desc",
+	"callback": "MediaWiki\\Extension\\AgeClassification\\Hooks::onRegistration",
 	"ConfigRegistry": {
 		"ageclassification": "GlobalVarConfig::newInstance"
 	},
