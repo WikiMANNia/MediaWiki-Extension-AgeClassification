@@ -23,7 +23,6 @@ class Hooks implements
 	SkinAfterPortletHook,
 	SkinBuildSidebarHook
 {
-
 	private static $instance;
 
 	private bool $button_active;
@@ -76,10 +75,10 @@ class Hooks implements
 
 		$skinName = $skin->getSkinName();
 		switch ( $skinName ) {
-			case 'citizen' :
+			case 'bouquet' :
 			case 'cologneblue' :
+			case 'gamepress' :
 			case 'modern' :
-			case 'monaco' :
 			case 'monobook' :
 			case 'timeless' :
 				$out->addModuleStyles( 'ext.ageclassification.common' );
@@ -91,7 +90,10 @@ class Hooks implements
 				$out->addModuleStyles( 'ext.ageclassification.vector' );
 			break;
 			case 'apioutput' :
+			case 'citizen' :
+			case 'dusk' :
 			case 'minerva' :
+			case 'monaco' :
 			case 'fallback' :
 			break;
 			default :
@@ -136,7 +138,10 @@ class Hooks implements
 			case 'cologneblue' :
 				$img_element = Html::rawElement( 'div', [ 'class' => 'body' ], $img_element );
 				$sidebar_element['ageclassification'] = $img_element;
+			case 'bouquet' :
 			case 'citizen' :
+			case 'dusk' :
+			case 'gamepress' :
 			case 'modern' :
 			case 'monaco' :
 			case 'monobook' :
@@ -183,8 +188,11 @@ class Hooks implements
 		$sidebar_element = [];
 
 		switch ( $skin->getSkinName() ) {
+			case 'bouquet' :
 			case 'citizen' :
 			case 'cologneblue' :
+			case 'dusk' :
+			case 'gamepress' :
 			case 'modern' :
 			case 'monaco' :
 			case 'monobook' :

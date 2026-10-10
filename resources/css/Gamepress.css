@@ -1,1 +1,20 @@
 /* CSS for Gamepress skin */
+
+#p-ageclassification .body {
+}
+
+/* AgeClassification: überflüssigen Abstand unter dem Portlet beseitigen */
+#p-ageclassification {
+    margin: 0 0 0 0 !important;
+    padding: 0 0 0 0 !important;
+}
+
+/* Gewünschten Abstand zwischen Überschrift und Bild erhalten */
+#p-ageclassification .widget-title {
+    margin: 0 0 6px 0 !important;
+}
+
+/* Nach dem Bild den üblichen Abstand wiederherstellen */
+#p-ageclassification + .after-portlet-ageclassification {
+    margin: 0 0 18px 0 !important;
+}

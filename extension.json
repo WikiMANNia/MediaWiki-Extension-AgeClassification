@@ -3,7 +3,7 @@
 	"author": "[https://wikimannia.org WikiMANNia]",
 	"url": "https://www.mediawiki.org/wiki/Extension:AgeClassification",
 	"license-name": "GPL-2.0-or-later",
-	"version": "1.8.0",
+	"version": "1.9.0",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
@@ -54,17 +54,17 @@
 		"ext.ageclassification.common": {
 			"styles": "css/Common.css"
 		},
-		"ext.ageclassification.citizen": {
-			"styles": "css/Citizen.css"
+		"ext.ageclassification.bouquet": {
+			"styles": "css/Bouquet.css"
 		},
 		"ext.ageclassification.cologneblue": {
 			"styles": "css/Cologneblue.css"
 		},
+		"ext.ageclassification.gamepress": {
+			"styles": "css/Gamepress.css"
+		},
 		"ext.ageclassification.modern": {
 			"styles": "css/Modern.css"
-		},
-		"ext.ageclassification.monaco": {
-			"styles": "css/Monaco.css"
 		},
 		"ext.ageclassification.monobook": {
 			"styles": "css/Monobook.css"

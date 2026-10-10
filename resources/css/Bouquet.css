@@ -1,2 +1,21 @@
 /* CSS for Bouquet skin */
 
+#p-ageclassification .body {
+}
+
+/* AgeClassification: überflüssigen Abstand unter dem Portlet beseitigen */
+aside#p-ageclassification {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Gewünschten Abstand zwischen Überschrift und Bild erhalten */
+aside#p-ageclassification .widget-title {
+    margin-bottom: 1em !important;
+}
+
+/* Nach dem Bild den üblichen Abstand wiederherstellen */
+aside#p-ageclassification + .after-portlet-ageclassification {
+    margin-top: 0 !important;
+    margin-bottom: 1.7em !important;
+}
